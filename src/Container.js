@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
-const Container = ({ camera }) => {
+const Container = ({ camera,onDelete }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const togglePopup = () => {
     setIsPopupVisible((prevState) => !prevState);
   };
   return (
     <div className="container">
+      <button className="delete-button" onClick={() => onDelete(camera.id)}>
+        &times;
+      </button>
       <img
         src={`${camera.image}`}
         alt={`이미지 ${camera.id}`}
