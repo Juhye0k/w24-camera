@@ -10,14 +10,14 @@ const SERVER_URL = 'http://localhost:8080/api/songs';
 
 const App = () => {
   const [camera, setCamera] = useState([]);
-  const [isAddFormVisible, setAddFormVisible] = useState(false); // 등록 폼 표시 여부
+  const [isAddFormVisible, setAddFormVisible] = useState(false); 
 
-  // 카메라 목록 가져오기
+ 
   const getCamera = async () => {
     try {
       const res = await axios.get(SERVER_URL);
       console.log(res);
-      setCamera(res.data); // 기존 카메라 리스트 설정
+      setCamera(res.data); 
     } catch (err) {
       console.log(err);
       setCamera([]);
@@ -25,22 +25,22 @@ const App = () => {
   };
 
   useEffect(() => {
-    getCamera(); // 컴포넌트가 마운트될 때 데이터 가져오기
+    getCamera(); 
   }, []);
 
-  // 카메라 추가
+  
   const addCamera = async (newCamera) => {
     try {
-      const res = await axios.post(SERVER_URL, newCamera); // POST 요청으로 새 카메라 추가
+      const res = await axios.post(SERVER_URL, newCamera); 
       console.log(res.data);
-      setCamera((prev) => [...prev, res.data]); // 새 데이터를 기존 상태에 추가
-      setAddFormVisible(false); // 등록 폼 닫기
+      setCamera((prev) => [...prev, res.data]); 
+      setAddFormVisible(false); 
     } catch (err) {
       console.log(err);
     }
   };
 
-  // 카메라 삭제
+  
   const deleteCamera = async (id) => {
     try {
       await axios.delete(`${SERVER_URL}/${id}`);
@@ -50,7 +50,7 @@ const App = () => {
     }
   };
 
-  // 카메라 검색
+
   const searchCamera = async (model) => {
     try {
       const res = await axios.get(`${SERVER_URL}/${model}`);
