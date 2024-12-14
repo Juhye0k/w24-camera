@@ -1,13 +1,22 @@
 import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
-const Container = ({ camera }) => {
+const Container = ({ camera, onDelete }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  // 팝업 토글 함수
   const togglePopup = () => {
     setIsPopupVisible((prevState) => !prevState);
   };
+
   return (
     <div className="container">
+      <button
+        className="delete-button"
+        onClick={() => onDelete(camera.id)} // 삭제 버튼 클릭 시 호출
+      >
+        &times;
+      </button>
       <img
         src={`${camera.image}`}
         alt={`이미지 ${camera.id}`}
@@ -22,7 +31,10 @@ const Container = ({ camera }) => {
         >
           {`${camera.model} (${camera.brand})`}
         </a>
-        <div className="camera-rating" style={{ position: 'absolute', top: '15px', left: '15px' }}>
+        <div
+          className="camera-rating"
+          style={{ position: 'absolute', top: '15px', left: '15px' }}
+        >
           {[...Array(camera.rating)].map((_, index) => (
             <FaStar key={index} />
           ))}
@@ -45,4 +57,5 @@ const Container = ({ camera }) => {
     </div>
   );
 };
+
 export { Container };
