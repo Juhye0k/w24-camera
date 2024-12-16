@@ -12,7 +12,6 @@ const App = () => {
   const [camera, setCamera] = useState([]);
   const [isAddFormVisible, setAddFormVisible] = useState(false); 
 
- 
   const getCamera = async () => {
     try {
       const res = await axios.get(SERVER_URL);
@@ -28,7 +27,6 @@ const App = () => {
     getCamera(); 
   }, []);
 
-  
   const addCamera = async (newCamera) => {
     try {
       const res = await axios.post(SERVER_URL, newCamera); 
@@ -40,7 +38,6 @@ const App = () => {
     }
   };
 
-  
   const deleteCamera = async (id) => {
     try {
       await axios.delete(`${SERVER_URL}/${id}`);
@@ -49,7 +46,6 @@ const App = () => {
       console.log(err);
     }
   };
-
 
   const searchCamera = async (model) => {
     try {
@@ -60,7 +56,6 @@ const App = () => {
       setCamera([]);
     }
   };
-
 
   return (
     <div className="App">
@@ -107,6 +102,5 @@ const CameraList = ({ listCamera, onDelete }) => {
     </div>
   );
 };
-
 
 export default App;
