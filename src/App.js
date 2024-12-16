@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import './AddCameraForm.css';
 import { Container } from './Container.js';
 import SearchBar from './SearchBar.js';
+import AddCameraForm from './AddCameraForm.js';
+
 const SERVER_URL = 'http://localhost:8080/api/songs';
 
 const App = () => {
-  const [camera, setCamera] = useState([]); 
+  const [camera, setCamera] = useState([]);
+  const [isAddFormVisible, setAddFormVisible] = useState(false); 
 
   const getCamera = async () => {
     try {
@@ -22,6 +26,17 @@ const App = () => {
   useEffect(() => {
     getCamera(); 
   }, []);
+
+  const addCamera = async (newCamera) => {
+    try {
+      const res = await axios.post(SERVER_URL, newCamera); 
+      console.log(res.data);
+      setCamera((prev) => [...prev, res.data]); 
+      setAddFormVisible(false); 
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const deleteCamera = async (id) => {
     try {
@@ -45,8 +60,25 @@ const App = () => {
   return (
     <div className="App">
       <Header />
+      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <button
+          onClick={() => setAddFormVisible(true)}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#007bff',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+            marginBottom: '20px',
+          }}
+        >
+          등록하기
+        </button>
+      </div>
       <SearchBar onSearch={searchCamera} />
       <CameraList listCamera={camera} onDelete={deleteCamera} />
+      {isAddFormVisible && <AddCameraForm onAddCamera={addCamera} onClose={() => setAddFormVisible(false)} />}
     </div>
   );
 };

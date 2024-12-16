@@ -1,0 +1,103 @@
+.add-camera-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  
+  .add-camera-form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  .add-camera-form h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #3aa6b9;
+    text-align: center;
+  }
+  
+  .add-camera-form .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .add-camera-form .input-group input,
+  .add-camera-form .input-group textarea {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f4f4f4;
+    margin-left: 10px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .add-camera-form .input-group textarea {
+    height: 50px;
+    resize: none;
+  }
+  
+  .add-camera-form .input-group svg {
+    font-size: 1.5rem;
+    color: #3aa6b9;
+  }
+  
+  .add-camera-form button {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 10px;
+    background-color: #3aa6b9;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-camera-form button:hover {
+    background-color: #3295a4;
+  }
+  
+  .add-camera-form .btn-secondary {
+    background-color: #d3d3d3;
+    margin-top: 10px;
+  }
+  
+  .add-camera-form .btn-secondary:hover {
+    background-color: #bfbfbf;
+  }
+  
+  .add-camera-overlay.hidden {
+    display: none;
+  }
+  
+ 
+  @keyframes slideDown {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

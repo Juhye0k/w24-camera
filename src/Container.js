@@ -11,10 +11,7 @@ const Container = ({ camera, onDelete }) => {
 
   return (
     <div className="container">
-      <button
-        className="delete-button"
-        onClick={() => onDelete(camera.id)} // 삭제 버튼 클릭 시 호출
-      >
+      <button className="delete-button" onClick={() => onDelete(camera.id)}>
         &times;
       </button>
       <img
